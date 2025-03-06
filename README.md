@@ -146,7 +146,19 @@ Explain the step-by-step approach taken to solve the problem.
 
 
 2️⃣ Define point of view  
+
+![image](https://github.com/user-attachments/assets/a32cccdb-b020-4cc6-a0be-9da62f8bdaa9)
+
+![image](https://github.com/user-attachments/assets/584dda10-497b-41ea-8453-72d9b094695c)
+
+
 3️⃣ Ideate  
+
+![image](https://github.com/user-attachments/assets/d515dc76-4cd0-435a-814c-c2438c04ba0d)
+
+![image](https://github.com/user-attachments/assets/44e8a952-713e-4bd2-ab82-ba147f3cc1bd)
+
+
 4️⃣ Prototype and review  
 
 ---
