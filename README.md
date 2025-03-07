@@ -48,14 +48,13 @@ This project analyzes global sales performance using Power BI. The objective is 
 ✔️ What factors contribute to revenue fluctuations across different segments?
 
 ### 🎯Project Outcome:  
-Summarize key findings and insights/ trends/ themes in a concise, bullet-point 
-format.  
+✔️ **Sales Performance:** The United States dominates in sales, with New York City leading in both revenue and profitability. Other high-performing cities include Seattle, Sydney, and San Francisco.
 
- _Example:_
+✔️ **Product Insights:** Technology (Phones & Copiers) drives profit in NYC and Seattle, while Bookcases perform well in Sydney. San Francisco stands out for Office Supplies, especially Art, Labels, and Envelopes.
 
-✔️ Sales Trends: The top X% of products generate Y% of revenue.  
-✔️ Inventory Optimization: Certain products are frequently out-of-stock, causing revenue loss.  
-✔️ Customer Behavior: Returning customers spend Z% more per transaction than new customers.  
+✔️ **Return Rate Analysis:** NYC has a lower-than-average return rate, making it a high-potential market for growth. Other regions should adopt best practices to reduce returns and increase customer satisfaction.
+
+✔️ **Regional Growth Potential:** Seattle has strong profit potential in Copiers, while Sydney excels in Furniture. Targeted expansion strategies can further boost revenue. 
 
 ---
 
@@ -168,6 +167,8 @@ Explain the step-by-step approach taken to solve the problem.
 ## ⚒️ Main Process
 
 1️⃣ Data Cleaning & Preprocessing  
+![image](https://github.com/user-attachments/assets/0cc974b0-abd0-49ce-a03d-e84384146e7c)
+
 2️⃣ Exploratory Data Analysis (EDA)  
 3️⃣ SQL/ Python Analysis 
 
@@ -367,10 +368,11 @@ Trong Technology: Copier vừa có AOV cao vừa có profit cao, trong đó Hewl
    - Since return delivery times are short, ensure customer feedback is analyzed for patterns (wrong item sent, damages, missing parts).  
    - Improve post-purchase support for expensive products to reduce returns.  
 
-Would you like a deeper analysis on any specific metric? 🚀
 
 #### 3️⃣ Dashboard 3: Sales by location  
-👉🏻 Insert Power BI dashboard screenshots here  
+
+![image](https://github.com/user-attachments/assets/16e29668-3235-49c0-ab9b-7e6432760433)
+ 
 
 📌 Analysis 3:  
 - Observation: _Describe trends, key metrics, and patterns._  
@@ -382,42 +384,51 @@ Seattle có profit cao thứ 2 sau NYC, lĩnh vực có profit cao nhất cũng 
 Sydney - Australia cũng có doanh số cao. Mặt hàng có profit cao nhất ở đây là Bookcase.
 San Francisco là thành phố duy nhất trong top 5 profit có Office supplies chiếm tỷ lệ trong profit cao nhất, trong đó nhiều nhất là Art, sau đó là Label và envelopes
 
+ **Observations:**
+1. **United States Dominance**:
+   - The US leads in total orders, significantly outperforming other countries (1,704 orders).
+   - New York City is a major contributor, excelling in Technology sales, particularly **phones**.
+   - NYC also has a **lower return rate (3.47%)**, indicating customer satisfaction.
+
+2. **Seattle's High Profitability**:
+   - **Seattle ranks second** in profit.
+   - While Technology is the top category, **copiers** generate most of the profit, with **phones contributing less**.
+
+3. **Sydney’s Strong Sales**:
+   - Australia ranks second in orders (513).
+   - The highest profit-generating product in **Sydney is Bookcases**.
+
+4. **San Francisco’s Unique Profit Mix**:
+   - Unlike other top cities, **Office Supplies** dominate its profit.
+   - Within this category, **Art, Labels, and Envelopes** are the key contributors.
+
+**Recommendations:**
+1. **Expand Technology Sales in NYC**:
+   - Given the high demand and low return rate, **further investment in phone sales and marketing in NYC** can yield high returns.
+
+2. **Enhance Copier Sales in Seattle**:
+   - Copier sales should be **prioritized** in Seattle to maximize profit growth.
+   - Consider **promotions or bundling offers** to encourage repeat purchases.
+
+3. **Leverage Sydney’s Demand for Bookcases**:
+   - Develop targeted **advertising campaigns and discounts** for Bookcases in Sydney.
+
+4. **Capitalize on San Francisco’s Office Supplies Demand**:
+   - Since **Art, Labels, and Envelopes** drive profits in SF, **optimize stock levels and marketing** for these products.
+
 
 
 ---
 
 ## 🔎 Final Conclusion & Recommendations  
 
-Insight and Recommendation
+#### **Conclusion:**  
+The analysis of sales, products, and locations highlights strong performance in key markets, particularly the **United States**, with **New York City leading in sales and profitability**. **Seattle, Sydney, and San Francisco** also show strong potential, each excelling in specific product categories. **Technology, Office Supplies, and Furniture** drive overall revenue, while **return rates remain manageable**.  
 
-OVERVIEW
+ 
 
-
-PRODUCT
-
-Office Supplies profit cao nhưng AOV thấp => cần tăng bán kèm để nâng giá trị đơn => khuyến mãi product bán được ít trong category office supplies, các chương trình giảm giá khi mua kèm.
-(Appliance đang có profit và AOV khá cao => có thể bán kèm các sản phẩm giá thấp hoặc bị trả lại nhiều (binder, art, paper), hoặc tặng kèm khi mua appliance.)
-
-Furniture profit thấp, AOV cao => tăng profit => tìm cách giảm chi phí (thu hẹp thị trường), tăng giá bán 
-Table: sale thấp trong khi tỷ lệ bị trả hàng cao => tìm nhà cung cấp khác hoặc bỏ mặt hàng này
-
-Technology vừa có profit vao và AOV cao => tập trung vào category này
-Trong Technology: Copier vừa có AOV cao vừa có profit cao, trong đó Hewllet copy machine là dòng máy bán chạy nhất
-
-MARKET
-
-United States là thị trường bán được nhiều đơn hàng nhất, đặc biệt là ở New York city 
-Tại NYC thì các mặt hàng Technology, đặc biệt là phone bán chạy nhất. NYC cũng có tỷ lệ trả hàng thấp hơn trung bình => thị trường cần đẩy mạnh
-Seattle có profit cao thứ 2 sau NYC, lĩnh vực có profit cao nhất cũng là technology, nhưng phần lớn đến từ copier, phone chỉ chiếm số ít
-Sydney - Australia cũng có doanh số cao. Mặt hàng có profit cao nhất ở đây là Bookcase.
-San Francisco là thành phố duy nhất trong top 5 profit có Office supplies chiếm tỷ lệ trong profit cao nhất, trong đó nhiều nhất là Art, sau đó là Label và envelopes
-
-
-
-
-👉🏻 Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following:  
-
-📌 Key Takeaways:  
-✔️ Recommendation 1  
-✔️ Recommendation 2  
-✔️ Recommendation 3
+#### **📌 Key Takeaways:**  
+✔️ **Expand in High-Performing Markets** – Strengthen presence in **NYC and Seattle**, where sales and profitability are strong, with a focus on **Technology (Phones & Copiers)**.  
+✔️ **Optimize Product Strategies** – Promote **Bookcases in Sydney** and **Office Supplies (Art, Labels, Envelopes) in San Francisco** to capitalize on regional demand.  
+✔️ **Enhance Customer Retention** – NYC’s low return rate suggests a loyal customer base; replicating similar strategies in other regions can **reduce returns and boost repeat purchases**.
+✔️ **Drive Growth with Targeted Marketing** – Use **data-driven promotions, localized advertising, and product bundling** to improve engagement and maximize revenue. 
