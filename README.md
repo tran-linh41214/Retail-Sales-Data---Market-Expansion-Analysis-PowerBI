@@ -169,6 +169,78 @@ Explain the step-by-step approach taken to solve the problem.
 1️⃣ Data Cleaning & Preprocessing  
 ![image](https://github.com/user-attachments/assets/0cc974b0-abd0-49ce-a03d-e84384146e7c)
 
+source
+
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
+```
+Promote header
+
+```power BI
+= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+```
+
+change type
+```power BI
+= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
+```
+
+removed columns
+```power BI
+= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Category", "Sub-Category", "Product Name", "Customer Name", "Segment"})
+```
+
+Trimmed text
+```power BI
+= Table.TransformColumns(#"Removed Columns",{{"Order ID", Text.Trim, type text}})
+```
+
+cleaned text
+```power BI
+= Table.TransformColumns(#"Trimmed Text",{{"Order ID", Text.Clean, type text}})
+```
+
+Merged queries
+```power BI
+= Table.NestedJoin(#"Cleaned Text", {"Order ID"}, Returns, {"Order ID"}, "Returns", JoinKind.LeftOuter)
+```
+
+Renamed Columns
+```power BI
+= Table.RenameColumns(#"Merged Queries",{{"Returns", "Return label"}})
+```
+
+Expanded Return Label
+```power BI
+= Table.ExpandTableColumn(#"Renamed Columns", "Return label", {"Returned"}, {"Return label.Returned"})
+```
+
+Renamed Columns1
+```power BI
+= Table.RenameColumns(#"Expanded Return label",{{"Return label.Returned", "Return label"}})
+```
+Replaced Value
+```power BI
+= Table.ReplaceValue(#"Renamed Columns1",null,"No",Replacer.ReplaceValue,{"Return label"})
+```
+
+Dim_employee
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+```
+
+Promoted Headers
+
+
+
+
+
 2️⃣ Exploratory Data Analysis (EDA)  
 3️⃣ SQL/ Python Analysis 
 
@@ -425,10 +497,9 @@ San Francisco là thành phố duy nhất trong top 5 profit có Office supplies
 #### **Conclusion:**  
 The analysis of sales, products, and locations highlights strong performance in key markets, particularly the **United States**, with **New York City leading in sales and profitability**. **Seattle, Sydney, and San Francisco** also show strong potential, each excelling in specific product categories. **Technology, Office Supplies, and Furniture** drive overall revenue, while **return rates remain manageable**.  
 
- 
 
 #### **📌 Key Takeaways:**  
 ✔️ **Expand in High-Performing Markets** – Strengthen presence in **NYC and Seattle**, where sales and profitability are strong, with a focus on **Technology (Phones & Copiers)**.  
 ✔️ **Optimize Product Strategies** – Promote **Bookcases in Sydney** and **Office Supplies (Art, Labels, Envelopes) in San Francisco** to capitalize on regional demand.  
-✔️ **Enhance Customer Retention** – NYC’s low return rate suggests a loyal customer base; replicating similar strategies in other regions can **reduce returns and boost repeat purchases**.
+✔️ **Enhance Customer Retention** – NYC’s low return rate suggests a loyal customer base; replicating similar strategies in other regions can **reduce returns and boost repeat purchases**.  
 ✔️ **Drive Growth with Targeted Marketing** – Use **data-driven promotions, localized advertising, and product bundling** to improve engagement and maximize revenue. 
