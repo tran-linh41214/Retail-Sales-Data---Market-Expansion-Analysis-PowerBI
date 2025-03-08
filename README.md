@@ -167,10 +167,10 @@ Explain the step-by-step approach taken to solve the problem.
 ## ⚒️ Main Process
 
 1️⃣ Data Cleaning & Preprocessing  
-![image](https://github.com/user-attachments/assets/0cc974b0-abd0-49ce-a03d-e84384146e7c)
 
-source
-
+<details>
+  <summary>📌 Source</summary>
+ 
 ```power BI
 = Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
 ```
@@ -185,6 +185,127 @@ change type
 = Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
 ```
 
+</details>
+
+<details>
+  <summary>📌 Returns</summary>
+ 
+Source
+
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\Returns.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+```
+
+Changed Type
+
+```power BI
+= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+```
+
+Promote Headers
+
+```power BI
+= Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true])
+```
+
+Change type 1
+```power BI
+= Table.TransformColumnTypes(#"Promoted Headers",{{"Returned", type text}, {"Order ID", type text}})
+```
+
+Sorted Rows
+
+```power BI
+= Table.Sort(#"Changed Type1",{{"Order ID", Order.Ascending}})
+```
+
+Change type 2
+```power BI
+= Table.TransformColumnTypes(#"Sorted Rows",{{"Returned", type text}})
+```
+
+Trimmed Text
+```power BI
+= Table.TransformColumns(#"Changed Type2",{{"Order ID", Text.Trim, type text}})
+```
+
+Cleaned Text
+```power BI
+= Table.TransformColumns(#"Trimmed Text",{{"Order ID", Text.Clean, type text}})
+```
+
+</details>
+
+
+<details>
+  <summary>📌 Dim_employee</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+```
+
+Promoted Headers
+
+</details>
+
+
+<details>
+  <summary>📌 Dim_location</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
+```
+
+Promoted Headers
+
+```power BI
+= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
+```
+
+
+</details>
+
+
+
+
+
+
+
+
+
+2️⃣ Exploratory Data Analysis (EDA)  
+
+
+<details>
+  <summary>📌 Dim_employee</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+```
+
+Promoted Headers
+
+</details>
+
+orders
 removed columns
 ```power BI
 = Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Category", "Sub-Category", "Product Name", "Customer Name", "Segment"})
@@ -224,24 +345,36 @@ Replaced Value
 = Table.ReplaceValue(#"Renamed Columns1",null,"No",Replacer.ReplaceValue,{"Return label"})
 ```
 
-Dim_employee
-Sources
+
+<details>
+  <summary>📌 Dim_location</summary>
+ 
+Remove other columns
 ```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+= Table.SelectColumns(#"Changed Type",{"City", "State", "Country", "Market", "Region"})
 ```
 
-Changed Type
+Remove Columns
 ```power BI
-= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+= Table.RemoveColumns(#"Removed Other Columns",{"Market"})
 ```
 
-Promoted Headers
+Remove Duplicates
 
+```power BI
+= Table.Distinct(#"Removed Columns", {"City"})
+```
+Remove duplicate1
+```power BI
+= Table.Distinct(#"Removed Duplicates", {"City"})
+```
 
+Sort rows
+```power BI
+= Table.Sort(#"Removed Duplicates1",{{"City", Order.Ascending}})
+```
 
-
-
-2️⃣ Exploratory Data Analysis (EDA)  
+</details>
 3️⃣ SQL/ Python Analysis 
 
 - In each step, show your Code
