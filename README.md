@@ -422,32 +422,11 @@ Sort rows
 
 </details>
 
-<details>
-  <summary>📌 Dim_employee</summary>
- 
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
-```
-
-Promoted Headers
-
-</details>
 3️⃣ SQL/ Python Analysis 
 
-- In each step, show your Code
-
-- Include query/ code execution screenshots or result samples
-
-- Explain its purpose and its findings
-
-  **Metric**
-
+<details>
+  <summary>Metric table</summary>
+ 
 ```power BI
 Total_orders = DISTINCTCOUNT(Orders[Order ID])
 
@@ -470,8 +449,12 @@ avg_total_sale_all =
 total_sale / total_orders
 ```
 
-**PY - Previous Year**
+</details>
 
+
+<details>
+  <summary>PY - Previous Year</summary>
+ 
 ```power BI
 Total_orders_PY = CALCULATE([Total_orders], SAMEPERIODLASTYEAR(Dim_date[Date]))
 
@@ -481,8 +464,11 @@ Total_sale_PY = CALCULATE([Total_sale], SAMEPERIODLASTYEAR(Dim_date[Date]))
 
 ```
 
-**Measure**
-**%change - % change vs previous year**
+</details>
+
+
+<details>
+  <summary>%change - % change vs previous year</summary>
 
 ```power BI
 %change_orders = DIVIDE([Total_orders] - [Total_orders_PY],[Total_orders_PY])
@@ -497,7 +483,11 @@ Total_sale_PY = CALCULATE([Total_sale], SAMEPERIODLASTYEAR(Dim_date[Date]))
 %PF = DIVIDE([Total_profit],[Total_sale])
 ```
 
-**Return metric**
+</details>
+
+<details>
+  <summary>Return metric</summary>
+
 
 ```power BI
 prduct_returned_count = calculate(count(Orders[Return label]),filter(Orders,Orders[Return label] = "Yes"))
@@ -513,6 +503,9 @@ avg_returned_orders_deliverytime = CALCULATE(AVERAGE(Orders[Delivery_time]),filt
 avg_returned_product_value = calculate(SUM(Orders[Sales]),Orders[Return label] = "Yes") / [prduct_returned_count]
 
 ```
+
+</details>
+
 
 4️⃣ Power BI Visualization
 
