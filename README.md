@@ -3,9 +3,6 @@
 
 
 ---
-![E-commerce Website_Analysis](https://github.com/Dorothy-Ho-Vy/Sample-Readme-template/blob/0e47d32968459ec80d7d2666fbf5044ac56894e6/1.png)
-
-Change Icon emoji 🔥🔍📘🚩 to your likings by clicking "Start" + "."
 
 # 📊 Project Title:  [Global_Superstore_Sales]  
 Author: [Tran Linh]    
@@ -169,7 +166,8 @@ Explain the step-by-step approach taken to solve the problem.
 1️⃣ Data Cleaning & Preprocessing  
 
 <details>
-  <summary>📌 Source</summary>
+  <summary>📌Orders</summary>
+Source
  
 ```power BI
 = Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
@@ -278,34 +276,80 @@ Changed Type
 </details>
 
 
+<details>
+  <summary>📌 Dim_customer</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
+```
 
+Promote Headers
+```power BI
+= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+```
 
+Changed Type
+```power BI
+= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
+```
 
+Remove columns
+```power BI
+= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Order ID", "Order Date", "Ship Date", "Ship Mode"})
+```
 
+Sort rows
+```power BI
+= Table.Sort(#"Removed Columns",{{"Customer Name", Order.Ascending}})
+```
 
+Remove Columns
+```power BI
+= Table.RemoveColumns(#"Sorted Rows",{"City", "Postal Code", "Market", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Profit"})
+```
+
+Remove duplicates
+```power BI
+= Table.Distinct(#"Removed Columns1", {"Customer ID"})
+```
+</details>
+
+<details>
+  <summary>📌 Dim_product</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
+```
+Promote Headers
+```power BI
+= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
+```
+
+Remove Columns
+```power BI
+= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Customer Name", "Segment", "City", "Postal Code", "Market", "Sales", "Quantity", "Profit"})
+```
+
+Remove Duplicates
+```power BI
+= Table.Distinct(#"Removed Columns", {"Product ID"})
+```
+</details>
 
 
 2️⃣ Exploratory Data Analysis (EDA)  
 
 
 <details>
-  <summary>📌 Dim_employee</summary>
+  <summary>Orders</summary>
  
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
-```
-
-Promoted Headers
-
-</details>
-
-orders
 removed columns
 ```power BI
 = Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Category", "Sub-Category", "Product Name", "Customer Name", "Segment"})
@@ -345,6 +389,8 @@ Replaced Value
 = Table.ReplaceValue(#"Renamed Columns1",null,"No",Replacer.ReplaceValue,{"Return label"})
 ```
 
+</details>
+
 
 <details>
   <summary>📌 Dim_location</summary>
@@ -373,6 +419,23 @@ Sort rows
 ```power BI
 = Table.Sort(#"Removed Duplicates1",{{"City", Order.Ascending}})
 ```
+
+</details>
+
+<details>
+  <summary>📌 Dim_employee</summary>
+ 
+Sources
+```power BI
+= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
+```
+
+Changed Type
+```power BI
+= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
+```
+
+Promoted Headers
 
 </details>
 3️⃣ SQL/ Python Analysis 
@@ -451,7 +514,7 @@ avg_returned_product_value = calculate(SUM(Orders[Sales]),Orders[Return label] =
 
 ```
 
-4️⃣ Power BI Visualization  (applicable for PBI Projects)
+4️⃣ Power BI Visualization
 
 ---
 
@@ -465,12 +528,6 @@ avg_returned_product_value = calculate(SUM(Orders[Sales]),Orders[Return label] =
  
 
 📌 Analysis 1:  
-- Observation: _Describe trends, key metrics, and patterns._  
-- Recommendation: _Suggest actions based on insights._  
-
-- Sale và profit đều tăng khá nhiều so với năm trước (khoảng 25%)
-- Mặt hàng table có profit âm (lỗ) -> cắt giảm mặt hàng này
-- Khu vực South America có profit cao nhất
 
   **Observations**  
 1. **Overall Performance Growth:**  
@@ -517,17 +574,6 @@ avg_returned_product_value = calculate(SUM(Orders[Sales]),Orders[Return label] =
 
 
 📌 Analysis 2:   
-- Observation: _Describe trends, key metrics, and patterns._  
-- Recommendation: _Suggest actions based on insights._
-
-Office Supplies profit cao nhưng AOV thấp => cần tăng bán kèm để nâng giá trị đơn => khuyến mãi product bán được ít trong category office supplies, các chương trình giảm giá khi mua kèm.
-(Appliance đang có profit và AOV khá cao => có thể bán kèm các sản phẩm giá thấp hoặc bị trả lại nhiều (binder, art, paper), hoặc tặng kèm khi mua appliance.)
-
-Furniture profit thấp, AOV cao => tăng profit => tìm cách giảm chi phí (thu hẹp thị trường), tăng giá bán 
-Table: sale thấp trong khi tỷ lệ bị trả hàng cao => tìm nhà cung cấp khác hoặc bỏ mặt hàng này
-
-Technology vừa có profit vao và AOV cao => tập trung vào category này
-Trong Technology: Copier vừa có AOV cao vừa có profit cao, trong đó Hewllet copy machine là dòng máy bán chạy nhất
 
  **Observations**  
 
@@ -579,16 +625,7 @@ Trong Technology: Copier vừa có AOV cao vừa có profit cao, trong đó Hewl
 ![image](https://github.com/user-attachments/assets/16e29668-3235-49c0-ab9b-7e6432760433)
  
 
-📌 Analysis 3:  
-- Observation: _Describe trends, key metrics, and patterns._  
-- Recommendation: _Suggest actions based on insights._
-
-- United States là thị trường bán được nhiều đơn hàng nhất, đặc biệt là ở New York city 
-Tại NYC thì các mặt hàng Technology, đặc biệt là phone bán chạy nhất. NYC cũng có tỷ lệ trả hàng thấp hơn trung bình => thị trường cần đẩy mạnh
-Seattle có profit cao thứ 2 sau NYC, lĩnh vực có profit cao nhất cũng là technology, nhưng phần lớn đến từ copier, phone chỉ chiếm số ít
-Sydney - Australia cũng có doanh số cao. Mặt hàng có profit cao nhất ở đây là Bookcase.
-San Francisco là thành phố duy nhất trong top 5 profit có Office supplies chiếm tỷ lệ trong profit cao nhất, trong đó nhiều nhất là Art, sau đó là Label và envelopes
-
+📌 Analysis 3:    
  **Observations:**
 1. **United States Dominance**:
    - The US leads in total orders, significantly outperforming other countries (1,704 orders).
