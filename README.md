@@ -1,11 +1,11 @@
-# Superstore-Sales
+# Retail Sales Data - Market Expansion Analysis | PowerBI
 
 
 
 ---
 
-# 📊 Project Title:  [Global_Superstore_Sales]  
-Author: [Tran Linh]    
+# 📊 Project Title:  Retail Sales Data - Market Expansion Analysis | PowerBI 
+Author: Tran Linh    
 Tools Used: Power BI  
 
 ---
@@ -24,7 +24,7 @@ Tools Used: Power BI
 ### Objective:
 ### 📖 What is this project about? 
  
-This project analyzes global sales performance using Power BI. The objective is to:
+This project analyzes global stationery sales performance using Power BI. The objective is to:
 
 - Identify top-performing products and regions for market expansion
 - Minimize losses by analyzing return trends
@@ -58,7 +58,8 @@ This project analyzes global sales performance using Power BI. The objective is 
 ## 📂 Dataset Description & Data Structure  
 
 ### 📌 Data Source  
-- Source: The dataset contains global sales information of a company called Superstore.   
+- Source: The dataset contains global sales information of a stationery company called Superstore.  
+[🧷link to the dataset](https://drive.google.com/drive/folders/1oGbuHPBQECXKUcbhjuYOgk-ZH55Uau-g?usp=drive_link)  
 - Format: .csv  
 
 ### 📊 Data Structure & Relationships  
@@ -72,10 +73,12 @@ This project analyzes global sales performance using Power BI. The objective is 
 
 #### 2️⃣ Table Schema & Data Snapshot  
 
-Table 1: Orders  
+<details>
+  <summary>📌 Click for detail</summary>
 
+  <details>
+  <summary>Table 1: Orders</summary>
 
-### **Orders Table**
 | Column Name   | Data Type | Description |
 |--------------|----------|-------------|
 | Order ID     | TEXT     | Unique identifier for each order |
@@ -99,23 +102,29 @@ Table 1: Orders
 | Quantity     | INT      | Number of items in the order |
 | Profit       | FLOAT    | Profit earned from the order |
 
+  </details>
 
+  <details>
+  <summary>Table 2: People</summary>  
 
-Table 2: People  
+| Column Name | Data Type | Description |
+|------------|----------|-------------|
+| Returned   | TEXT     | Indicates if the order was returned (Yes/No) |
+| Order ID   | TEXT     | Unique identifier for each order |  
 
-### **People Table**
+</details>
+
+  <details>
+  <summary>Table 3: Returns</summary>  
+
 | Column Name | Data Type | Description |
 |------------|----------|-------------|
 | Person     | TEXT     | Name of the person |
 | Region     | TEXT     | Region associated with the person |  
 
+</details>
 
-Table 3: Returns  
-
-| Column Name | Data Type | Description |
-|------------|----------|-------------|
-| Returned   | TEXT     | Indicates if the order was returned (Yes/No) |
-| Order ID   | TEXT     | Unique identifier for each order |
+</details> 
 
 
 #### 3️⃣ Data Relationships:  
@@ -134,27 +143,43 @@ Explain the step-by-step approach taken to solve the problem.
 
 1️⃣ Empathize  
 
-![image](https://github.com/user-attachments/assets/281fd807-6902-41b2-b285-7072bb3e6a97)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/281fd807-6902-41b2-b285-7072bb3e6a97" alt="Description">
+</p>
 
-![image](https://github.com/user-attachments/assets/9e25f73d-2c4f-4793-8a93-aebdcd37088c)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9e25f73d-2c4f-4793-8a93-aebdcd37088c" alt="Description">
+</p>
 
-![image](https://github.com/user-attachments/assets/839e31e2-2d6b-4611-b241-25984573a845)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/839e31e2-2d6b-4611-b241-25984573a845" alt="Description">
+</p>
 
-![image](https://github.com/user-attachments/assets/56abd9a1-33b1-4f5f-b294-d94c6b04a86e)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/56abd9a1-33b1-4f5f-b294-d94c6b04a86e" alt="Description">
+</p>
 
 
 2️⃣ Define point of view  
 
-![image](https://github.com/user-attachments/assets/a32cccdb-b020-4cc6-a0be-9da62f8bdaa9)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a32cccdb-b020-4cc6-a0be-9da62f8bdaa9" alt="Description">
+</p>
 
-![image](https://github.com/user-attachments/assets/584dda10-497b-41ea-8453-72d9b094695c)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/584dda10-497b-41ea-8453-72d9b094695c" alt="Description">
+</p>
 
 
 3️⃣ Ideate  
 
-![image](https://github.com/user-attachments/assets/d515dc76-4cd0-435a-814c-c2438c04ba0d)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d515dc76-4cd0-435a-814c-c2438c04ba0d" alt="Description">
+</p>
 
-![image](https://github.com/user-attachments/assets/44e8a952-713e-4bd2-ab82-ba147f3cc1bd)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/44e8a952-713e-4bd2-ab82-ba147f3cc1bd" alt="Description">
+</p>
 
 
 4️⃣ Prototype and review  
@@ -163,351 +188,34 @@ Explain the step-by-step approach taken to solve the problem.
 
 ## ⚒️ Main Process
 
-1️⃣ Data Cleaning & Preprocessing  
-
-<details>
-  <summary>📌Orders</summary>
-Source
- 
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
-```
-Promote header
-
-```power BI
-= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
-```
-
-change type
-```power BI
-= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
-```
-
-</details>
-
-<details>
-  <summary>📌 Returns</summary>
- 
-Source
-
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\Returns.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
-```
-
-Changed Type
-
-```power BI
-= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
-```
-
-Promote Headers
-
-```power BI
-= Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true])
-```
-
-Change type 1
-```power BI
-= Table.TransformColumnTypes(#"Promoted Headers",{{"Returned", type text}, {"Order ID", type text}})
-```
-
-Sorted Rows
-
-```power BI
-= Table.Sort(#"Changed Type1",{{"Order ID", Order.Ascending}})
-```
-
-Change type 2
-```power BI
-= Table.TransformColumnTypes(#"Sorted Rows",{{"Returned", type text}})
-```
-
-Trimmed Text
-```power BI
-= Table.TransformColumns(#"Changed Type2",{{"Order ID", Text.Trim, type text}})
-```
-
-Cleaned Text
-```power BI
-= Table.TransformColumns(#"Trimmed Text",{{"Order ID", Text.Clean, type text}})
-```
-
-</details>
-
-
-<details>
-  <summary>📌 Dim_employee</summary>
- 
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\People.csv"),[Delimiter=",", Columns=2, Encoding=1252, QuoteStyle=QuoteStyle.None])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}})
-```
-
-Promoted Headers
-
-</details>
-
-
-<details>
-  <summary>📌 Dim_location</summary>
- 
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
-```
-
-Promoted Headers
-
-```power BI
-= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
-```
-
-
-</details>
-
-
-<details>
-  <summary>📌 Dim_customer</summary>
- 
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
-```
-
-Promote Headers
-```power BI
-= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
-```
-
-Remove columns
-```power BI
-= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Order ID", "Order Date", "Ship Date", "Ship Mode"})
-```
-
-Sort rows
-```power BI
-= Table.Sort(#"Removed Columns",{{"Customer Name", Order.Ascending}})
-```
-
-Remove Columns
-```power BI
-= Table.RemoveColumns(#"Sorted Rows",{"City", "Postal Code", "Market", "Product ID", "Category", "Sub-Category", "Product Name", "Sales", "Quantity", "Profit"})
-```
-
-Remove duplicates
-```power BI
-= Table.Distinct(#"Removed Columns1", {"Customer ID"})
-```
-</details>
-
-<details>
-  <summary>📌 Dim_product</summary>
- 
-Sources
-```power BI
-= Csv.Document(File.Contents("C:\Users\admin\Downloads\Orders.csv"),[Delimiter=",", Columns=20, Encoding=65001, QuoteStyle=QuoteStyle.None])
-```
-Promote Headers
-```power BI
-= Table.PromoteHeaders(Source, [PromoteAllScalars=true])
-```
-
-Changed Type
-```power BI
-= Table.TransformColumnTypes(#"Promoted Headers",{{"Order ID", type text}, {"Order Date", type date}, {"Ship Date", type date}, {"Ship Mode", type text}, {"Customer ID", type text}, {"Customer Name", type text}, {"Segment", type text}, {"City", type text}, {"State", type text}, {"Country", type text}, {"Postal Code", Int64.Type}, {"Market", type text}, {"Region", type text}, {"Product ID", type text}, {"Category", type text}, {"Sub-Category", type text}, {"Product Name", type text}, {"Sales", type number}, {"Quantity", Int64.Type}, {"Profit", type number}})
-```
-
-Remove Columns
-```power BI
-= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Order ID", "Order Date", "Ship Date", "Ship Mode", "Customer ID", "Customer Name", "Segment", "City", "Postal Code", "Market", "Sales", "Quantity", "Profit"})
-```
-
-Remove Duplicates
-```power BI
-= Table.Distinct(#"Removed Columns", {"Product ID"})
-```
-</details>
-
-
-2️⃣ Exploratory Data Analysis (EDA)  
-
-
-<details>
-  <summary>Orders</summary>
- 
-removed columns
-```power BI
-= Table.RemoveColumns(#"Changed Type",{"State", "Country", "Region", "Category", "Sub-Category", "Product Name", "Customer Name", "Segment"})
-```
-
-Trimmed text
-```power BI
-= Table.TransformColumns(#"Removed Columns",{{"Order ID", Text.Trim, type text}})
-```
-
-cleaned text
-```power BI
-= Table.TransformColumns(#"Trimmed Text",{{"Order ID", Text.Clean, type text}})
-```
-
-Merged queries
-```power BI
-= Table.NestedJoin(#"Cleaned Text", {"Order ID"}, Returns, {"Order ID"}, "Returns", JoinKind.LeftOuter)
-```
-
-Renamed Columns
-```power BI
-= Table.RenameColumns(#"Merged Queries",{{"Returns", "Return label"}})
-```
-
-Expanded Return Label
-```power BI
-= Table.ExpandTableColumn(#"Renamed Columns", "Return label", {"Returned"}, {"Return label.Returned"})
-```
-
-Renamed Columns1
-```power BI
-= Table.RenameColumns(#"Expanded Return label",{{"Return label.Returned", "Return label"}})
-```
-Replaced Value
-```power BI
-= Table.ReplaceValue(#"Renamed Columns1",null,"No",Replacer.ReplaceValue,{"Return label"})
-```
-
-</details>
-
-
-<details>
-  <summary>📌 Dim_location</summary>
- 
-Remove other columns
-```power BI
-= Table.SelectColumns(#"Changed Type",{"City", "State", "Country", "Market", "Region"})
-```
-
-Remove Columns
-```power BI
-= Table.RemoveColumns(#"Removed Other Columns",{"Market"})
-```
-
-Remove Duplicates
-
-```power BI
-= Table.Distinct(#"Removed Columns", {"City"})
-```
-Remove duplicate1
-```power BI
-= Table.Distinct(#"Removed Duplicates", {"City"})
-```
-
-Sort rows
-```power BI
-= Table.Sort(#"Removed Duplicates1",{{"City", Order.Ascending}})
-```
-
-</details>
-
-3️⃣ SQL/ Python Analysis 
-
-<details>
-  <summary>Metric table</summary>
- 
-```power BI
-Total_orders = DISTINCTCOUNT(Orders[Order ID])
-
-Total_profit = SUM(Orders[Profit])
-
-Total_sale = SUM(Orders[Sales])
-```
-
-```power BI
-avg_delivery_time = AVERAGE(Orders[Delivery_time])
-```
-
-```power BI
-avg_total_sale_all = 
- VAR total_sale =
- CALCULATE(SUM(Orders[Sales]))
- VAR total_orders =
- CALCULATE(DISTINCTCOUNT(Orders[Order ID]))
- RETURN
-total_sale / total_orders
-```
-
-</details>
-
-
-<details>
-  <summary>PY - Previous Year</summary>
- 
-```power BI
-Total_orders_PY = CALCULATE([Total_orders], SAMEPERIODLASTYEAR(Dim_date[Date]))
-
-Total_profit_PY = CALCULATE([Total_profit], SAMEPERIODLASTYEAR(Dim_date[Date]))
-
-Total_sale_PY = CALCULATE([Total_sale], SAMEPERIODLASTYEAR(Dim_date[Date]))
-
-```
-
-</details>
-
-
-<details>
-  <summary>%change - % change vs previous year</summary>
-
-```power BI
-%change_orders = DIVIDE([Total_orders] - [Total_orders_PY],[Total_orders_PY])
-
-%change_profit = DIVIDE([Total_profit] - [Total_profit_PY],[Total_profit_PY])
-
-%change_sale = DIVIDE([Total_sale] - [Total_sale_PY],[Total_sale_PY])
-
-```
-
-```power BI
-%PF = DIVIDE([Total_profit],[Total_sale])
-```
-
-</details>
-
-<details>
-  <summary>Return metric</summary>
-
-
-```power BI
-prduct_returned_count = calculate(count(Orders[Return label]),filter(Orders,Orders[Return label] = "Yes"))
-
-Returned_Orders_count = CALCULATE(DISTINCTCOUNT(Orders[Order ID]), Orders[Return label] = "Yes")
-
-Returned_orders_sale = CALCULATE(SUM(Orders[Sales]), FILTER(Orders, Orders[Return label] = "Yes"))
-
-%return_orders = [Returned_Orders_count]/[Total_orders]
-
-avg_returned_orders_deliverytime = CALCULATE(AVERAGE(Orders[Delivery_time]),filter(Orders,Orders[Return label] = "Yes"))
-
-avg_returned_product_value = calculate(SUM(Orders[Sales]),Orders[Return label] = "Yes") / [prduct_returned_count]
-
-```
-
-</details>
-
-
-4️⃣ Power BI Visualization
+1️⃣ Apply CodeM to create Dim_Date table 
+
+| Column Name     | Description                            |
+|-----------------|----------------------------------------|
+| Date            | The specific date.                     |
+| Year            | The year of the given date.            |
+| Month           | The month of the given date.           |
+| WeekofYear      | The week number within the year.       |
+| WeekDay         | The day of the week for the given date.|
+
+2️⃣ Apply DAX to calculate the metrics 
+
+| _Calculation      | Description                              |
+|-------------------|------------------------------------------|
+| %margin_profit    | Percentage of margin profit              |
+| %MoM_profit_rate  | Month-over-Month profit rate             |
+| %MoM_revenue      | Month-over-Month revenue                 |
+| %return_rates     | Percentage of return rates               |
+| orders_count      | Number of orders                         |
+| price_per_1item   | Price per one item                       |
+| profit_per_1item  | Profit per one item                      |
+| returns_count     | Number of returns                        |
+| total_profit      | Total profit                             |
+| total_quantity    | Total quantity of items                  |
+| total_revenue     | Total revenue                            |
+
+
+3️⃣ Power BI Visualization
 
 ---
 
