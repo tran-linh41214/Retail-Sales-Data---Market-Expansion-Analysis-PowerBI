@@ -188,14 +188,14 @@ Explain the step-by-step approach taken to solve the problem.
 
 ## ⚒️ Main Process
 
-1️⃣ Apply CodeM to create Dim_Date table 
+1️⃣ Create Dim_Date table 
 
 | Column Name     | Description                            |
 |-----------------|----------------------------------------|
 | Date            | The specific date.                     |
 | Year            | The year of the given date.            |
 | Month           | The month of the given date.           |
-| WeekofYear      | The week number within the year.       |
+| Quarter         | The quater of the given date.       |
 | WeekDay         | The day of the week for the given date.|
 
 2️⃣ Apply DAX to calculate the metrics 
@@ -203,174 +203,176 @@ Explain the step-by-step approach taken to solve the problem.
 | _Calculation      | Description                              |
 |-------------------|------------------------------------------|
 | %margin_profit    | Percentage of margin profit              |
-| %MoM_profit_rate  | Month-over-Month profit rate             |
-| %MoM_revenue      | Month-over-Month revenue                 |
-| %return_rates     | Percentage of return rates               |
-| orders_count      | Number of orders                         |
-| price_per_1item   | Price per one item                       |
-| profit_per_1item  | Profit per one item                      |
-| returns_count     | Number of returns                        |
-| total_profit      | Total profit                             |
-| total_quantity    | Total quantity of items                  |
-| total_revenue     | Total revenue                            |
+| %change_orders    | Year-over-Year total orders              |
+| %change_sale      | Year-over-Year total revenue             |
+| %change_profit    | Year-over-Year total profit              |
+| %return_orders     | Percentage of return rates               |
+| total_orders      | Number of orders                         |
+| total_sales       | Total revenue    |
+| total_profit      | Total profit   |
+| avg_total_sale_all   | Average order value                       |
+| average_delivery_time  | Average delivery time per order                      |
+| Returned_Orders_count | Number of returns                        |
+| Returned_orders_sale | Total value of returned orders  |
+| avg_returned_orders_deliverytime | Average delivery time per returned order |
+| avg_returned_product_value | Average returnes order value  |
 
 
 3️⃣ Power BI Visualization
 
+⚡ Dashboard 1: Sales Overview  
+
+![image](https://github.com/user-attachments/assets/9cb7450a-48fe-4736-a107-cb1f33619701)
+
+⚡ Dashboard 2: Sales by Product
+
+![image](https://github.com/user-attachments/assets/d649aa06-beef-4671-a3c0-0f2bd499156a)
+
+⚡ Dashboard 3: Sales by Market
+
+![image](https://github.com/user-attachments/assets/7f93aeba-ab6b-4b05-9eb0-dcd92fae27cf)
+
+
+ 
 ---
 
 ## 📊 Key Insights & Visualizations  
 
 ### 🔍 Dashboard Preview  
 
-#### 1️⃣ Dashboard 1: Overview
+#### 1️⃣ Dashboard 1: Sales Overview
 
-![image](https://github.com/user-attachments/assets/c8e12629-752b-4262-a177-07f7d1c3e91e)
- 
+![image](https://github.com/user-attachments/assets/573eafc7-e02d-411f-9b2d-01e4a4f1f064)
 
-📌 Analysis 1:  
 
-  **Observations**  
-1. **Overall Performance Growth:**  
-   - Total sales reached **$4.30M**, a **26.25% increase** compared to the previous year ($3.41M).  
-   - Total profit is **$504.17K**, showing a **23.89% improvement** over the previous year ($406.94K).  
-   - Total orders increased to **8.53K**, a **26.93% rise** from last year (6.72K).  
-
-2. **Sales Trend Over Time:**  
-   - Sales showed a steady upward trend throughout 2014.  
-   - Sales consistently outperformed the previous year, with visible seasonality and spikes in certain months.  
-
-3. **Profitability by Product:**  
-   - **Technology products** (especially **machines**) had the highest profit.  
-   - **Tables** had negative profitability, indicating losses.  
-   - Other categories had a mix of positive and negative margins, with some office supplies performing poorly.  
-
-4. **Profitability by Region:**  
-   - North America and Europe are performing well with positive profitability.  
-   - Some regions (e.g., parts of Africa and Australia) show lower or neutral profitability.  
-
----
-
- **Recommendations**  
-1. **Boost High-Performing Categories:**  
-   - Invest in marketing and promotions for **Technology products**, especially machines, as they drive high profits.  
-   - Expand inventory and logistics support for fast-selling, high-margin items.  
-
-2. **Address Loss-Making Products:**  
-   - Investigate why **Tables** are unprofitable—high costs, low demand, or pricing issues? Consider revising pricing, reducing costs, or discontinuing low-performing items.  
-   - Analyze underperforming office supplies and make data-driven adjustments.  
-
-3. **Leverage Regional Performance:**  
-   - Expand efforts in **high-performing regions** (North America, Europe) with targeted campaigns.  
-   - Explore pricing adjustments or localized strategies in **low-performing regions** to improve profitability.  
-
-4. **Seasonal Sales Strategy:**  
-   - Identify peak sales months and plan promotions, discounts, or inventory management accordingly.  
-   - Prepare for expected demand spikes to avoid stockouts and maximize revenue.  
+📌 Analysis:  
+✅ Sales and profit have grown significantly compared to the previous year (around 25%).  
+✅ The "Table" product has negative profit → Consider discontinuing or optimizing it.  
+✅ South America has the highest profit, while Africa and Canada contribute the least.  
+✅ The Technology category has the highest margin, while Furniture has lower profitability.  
+✅ APAC and EU are the top-performing markets in terms of total sales.
+  
 
 
 #### 2️⃣ Dashboard 2: Sales by product 
 
-![image](https://github.com/user-attachments/assets/cdceff6b-34ec-4cde-a6ae-e31c0a98a214)
+![image](https://github.com/user-attachments/assets/9bc1002c-99f9-41d6-a953-ff5f4a515b5d)
 
 
-📌 Analysis 2:   
 
- **Observations**  
+📌 Analysis 1:   Key Summary Metrics  
+✅ 25.04K Orders: Total number of transactions, reflecting sales volume.
+✅ 4.68% Return Rate: A relatively high return rate, requiring investigation into the causes.
 
-1. **Overall Order & Return Performance:**  
-   - Total **25.04K orders** were placed.  
-   - The **return rate is 4.68%**, indicating a moderate level of product returns.  
+📌 Analysis 2:  Returned Product Analysis  
 
-2. **Sales & Returns by Sub-Category:**  
-   - Some sub-categories like **Binders, Storage, and Paper** have **high return rates** (Binders: 1,422 returns, Storage: 957 returns).  
-   - **Tables and Chairs** also show significant returns in terms of value.  
-   - High sales sub-categories like **Copiers, Phones, and Appliances** appear in the "Returned Product" section, suggesting issues in these categories.  
-
-3. **Returned Product Impact:**  
-   - The total value of returned orders is **$819.02K**.  
-   - The **average product value** for returns is **$268.53**, indicating that costly items are being returned.  
-   - The **average delivery time** for returned products is **3.91 days**, slightly lower than the **3.97-day average for all products**, suggesting potential quality or fit issues rather than late deliveries.  
-
-4. **Top-Selling Products:**  
-   - **Hoover Stove and Hoover Toaster** are among the best-selling products.  
-   - Kitchen appliances dominate the top-seller list.  
-
-5. **AOV (Average Order Value) and Profit:**  
-   - Total sales are **$12.64M**, with an **AOV of $504.99**.  
-   - Profit varies across sub-categories, with some high-AOV categories also showing moderate profits.  
-
----
-
- **Recommendations**  
-
-1. **Reduce Return Rates for Key Sub-Categories:**  
-   - Investigate **why Binders, Storage, and Paper** have high returns (quality, misleading descriptions, shipping issues?).  
-   - Improve product descriptions, quality checks, or packaging for these categories.  
-
-2. **Address High-Value Returns:**  
-   - Since **Tables, Chairs, and Appliances** contribute to high return values, analyze reasons (defects, customer dissatisfaction, incorrect specifications).  
-   - Consider stricter return policies or better customer education on product specifications.  
-
-3. **Leverage Best-Selling Products:**  
-   - The **Hoover brand (Stove, Toaster)** performs well—consider increasing stock or launching promotional campaigns to boost sales.  
-   - Look into bundling kitchen appliances to increase overall basket size.  
-
-4. **Optimize Delivery & Customer Support:**  
-   - Since return delivery times are short, ensure customer feedback is analyzed for patterns (wrong item sent, damages, missing parts).  
-   - Improve post-purchase support for expensive products to reduce returns.  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4307d530-82cf-4008-9cb3-2310510443a5" alt="Description">
+</p>
 
 
-#### 3️⃣ Dashboard 3: Sales by location  
+✅ **Total Return Value:** $819.02K, a significant amount that impacts profitability.  
+✅ **AOV of Returns:** $268.53, indicating that the average value of a returned order is relatively high.  
+✅ **Quantity of Returned Products:** Binders have the highest return count (1,422 units), followed by Storage, Paper, and Art.  
+➡️ It’s important to investigate the reasons behind returns and consider improving quality control or adjusting return policies.
 
-![image](https://github.com/user-attachments/assets/16e29668-3235-49c0-ab9b-7e6432760433)
+📌 Analysis 3: Product Performance
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dde1bd1f-4c27-4a35-be30-69d03ef0b384" alt="Description">
+</p>
+
+
+✅ **Total Revenue:** $12.64M, representing overall product sales.  
+✅ **AOV (Average Order Value):** $504.99, indicating the average value per order.  
+✅ **AVG Delivery Time:** 3.97 days, the average time taken to deliver orders.    
+✅ Some categories have high AOV but do not yield high profits, suggesting a need to optimize pricing and cost structures.    
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/1593e03e-c656-47ad-8a52-3f92ed614ca0" alt="Description">
+</p>
+
+
+✅ Phones, copiers, and chairs generate the highest revenue.  
+✅ Some subcategories have high return rates despite lower sales, which may indicate quality issues or mismatches in customer expectations.  
+
+**⏩ Recommendation**  
+
+➡️ **Reduce Returns** – Improve quality or descriptions for **Binders, Storage, and Paper** to lower high return rates.  
+➡️ **Boost Best-Sellers** – Ensure stock & promote **Hoover Toaster, KitchenAid Blender** for higher sales.  
+➡️ **Re-Evaluate Low Performers** – Consider cutting or improving **Tables & Accessories** due to low profit/high returns.  
+➡️ **Maximize High AOV Products** – Optimize pricing & sales strategy for **Copiers & Appliances** to increase profit.  
+➡️ **Enhance Delivery** – Optimize logistics to improve the **3.97-day avg. delivery time**.  
+
+
+#### 3️⃣ Dashboard 3: Sales by Market  
+
+![image](https://github.com/user-attachments/assets/9515d35c-2f42-421c-a0c5-52ffa312c0ae)
+
  
+📌 Analysis 1: Revenue & Orders Overview  
 
-📌 Analysis 3:    
- **Observations:**
-1. **United States Dominance**:
-   - The US leads in total orders, significantly outperforming other countries (1,704 orders).
-   - New York City is a major contributor, excelling in Technology sales, particularly **phones**.
-   - NYC also has a **lower return rate (3.47%)**, indicating customer satisfaction.
 
-2. **Seattle's High Profitability**:
-   - **Seattle ranks second** in profit.
-   - While Technology is the top category, **copiers** generate most of the profit, with **phones contributing less**.
 
-3. **Sydney’s Strong Sales**:
-   - Australia ranks second in orders (513).
-   - The highest profit-generating product in **Sydney is Bookcases**.
+✅ Total Revenue: $12.64M, with 25.04K total orders.  
+✅ Avg. Margin Profit: 11.61%, which is decent but can be optimized.  
+✅ Avg. Return Rate: 4.68%, with 47.28% orders returned within 60 days.  
 
-4. **San Francisco’s Unique Profit Mix**:
-   - Unlike other top cities, **Office Supplies** dominate its profit.
-   - Within this category, **Art, Labels, and Envelopes** are the key contributors.
+📌 Analysis 2: Market performance  
 
-**Recommendations:**
-1. **Expand Technology Sales in NYC**:
-   - Given the high demand and low return rate, **further investment in phone sales and marketing in NYC** can yield high returns.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dd6a26e3-9c78-47ff-8668-ee67e491f7d2" alt="Description">
+</p>
 
-2. **Enhance Copier Sales in Seattle**:
-   - Copier sales should be **prioritized** in Seattle to maximize profit growth.
-   - Consider **promotions or bundling offers** to encourage repeat purchases.
 
-3. **Leverage Sydney’s Demand for Bookcases**:
-   - Develop targeted **advertising campaigns and discounts** for Bookcases in Sydney.
+✅ **APAC & LATAM** have higher orders but high return rates (5.8%-6.9%).  
+✅ **Canada** has the highest margin profit (26.62%), suggesting strong pricing power.  
 
-4. **Capitalize on San Francisco’s Office Supplies Demand**:
-   - Since **Art, Labels, and Envelopes** drive profits in SF, **optimize stock levels and marketing** for these products.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/670a7d5c-419a-4de0-bd5f-9683ab246702" alt="Description">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2777739a-cb06-4e5c-aafd-0a1f0569a101" alt="Description">
+</p>
+
+
+✅ The Central region leads in overall market revenue and has a stable YoY revenue growth of 45.05%. Its return rate is also approximately at the average level (4.91% vs. 4.68%), indicating an effective sales strategy.
+
+📌 Analysis 3: Segment Analysis  
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6467767c-5f5c-4602-9b3a-42b43d172c51" alt="Description">
+</p>
+
+
+✅ **Corporate** segment has the highest number of orders but also a high return rate of 4.93%.  
+✅ **Home Office** segment has lower revenue and returns, showing stable performance.  
+
+📌 Analysis 4: Employee & Product performance
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eab21d19-c847-44ff-9b30-043d8ffea226" alt="Description">
+</p>
+
+
+✅ Anna Andreadi handles a large share of orders, particularly Binders, Storage, and Paper, which have high return rates (4.6%-5.28%).  
+✅ Technology (Copiers, Phones) generates high revenue, but accessories have low revenue impact.  
 
 
 
 ---
 
 ## 🔎 Final Conclusion & Recommendations  
+  
 
-#### **Conclusion:**  
-The analysis of sales, products, and locations highlights strong performance in key markets, particularly the **United States**, with **New York City leading in sales and profitability**. **Seattle, Sydney, and San Francisco** also show strong potential, each excelling in specific product categories. **Technology, Office Supplies, and Furniture** drive overall revenue, while **return rates remain manageable**.  
+| **Category**        | **Key Insights** | **Recommendations** |
+|---------------------|----------------|---------------------|
+| **Overall Market Performance** | - Total revenue: $12.64M, steady YoY growth.  <br> - Return rate: 4.68%, within acceptable limits. | - Continue current market strategy while optimizing high-performing segments. <br> - Reduce returns by improving product quality and customer service. |
+| **Regional Analysis** | - **Central region** leads in revenue with stable 45.05% YoY growth. <br> - **South region** shows promising revenue but has slightly higher return rates. <br> - **Canada** and **Africa** have lower sales and profit margins. | - Expand product availability in Central region and maintain strong supply chain efficiency. <br> - Investigate reasons for returns in South and implement quality checks. <br> - Develop targeted marketing and promotional strategies for Canada & Africa to boost sales. |
+| **Segment Performance** | - **Consumer segment** generates the highest orders. <br> - **Corporate segment** has the highest return rate (~4.93%). | - Enhance B2C strategies through discounts and personalized marketing. <br> - Improve after-sales service for corporate clients to reduce returns. |
+| **Category & Product Insights** | - **Technology** and **Office Supplies** drive most revenue. <br> - **Furniture** has lower margin profit and higher return rates. <br> - **Binders, Chairs, and Storage** have the highest return quantity. | - Invest in marketing and expanding Technology & Office Supplies. <br> - Review and reconsider Furniture product lines, focusing on best sellers. <br> - Improve quality control on high-return products and introduce better return policies. |
+| **Employee Performance** | - Certain employees handle high-value transactions (e.g., Anna Andreadi). | - Provide incentives and training to high-performing employees to sustain growth. <br> - Analyze underperforming employees and provide targeted support. |
 
 
-#### **📌 Key Takeaways:**  
-✔️ **Expand in High-Performing Markets** – Strengthen presence in **NYC and Seattle**, where sales and profitability are strong, with a focus on **Technology (Phones & Copiers)**.  
-✔️ **Optimize Product Strategies** – Promote **Bookcases in Sydney** and **Office Supplies (Art, Labels, Envelopes) in San Francisco** to capitalize on regional demand.  
-✔️ **Enhance Customer Retention** – NYC’s low return rate suggests a loyal customer base; replicating similar strategies in other regions can **reduce returns and boost repeat purchases**.  
-✔️ **Drive Growth with Targeted Marketing** – Use **data-driven promotions, localized advertising, and product bundling** to improve engagement and maximize revenue. 
