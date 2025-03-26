@@ -222,15 +222,15 @@ Explain the step-by-step approach taken to solve the problem.
 
 ⚡ Dashboard 1: Sales Overview  
 
-![image](https://github.com/user-attachments/assets/9cb7450a-48fe-4736-a107-cb1f33619701)
+![image](https://github.com/user-attachments/assets/319f8e78-2b17-4a7f-ab19-79b098a01f30)  
 
-⚡ Dashboard 2: Sales by Product
+⚡ Dashboard 2: Sales by Product  
 
-![image](https://github.com/user-attachments/assets/d649aa06-beef-4671-a3c0-0f2bd499156a)
+![image](https://github.com/user-attachments/assets/232c4b30-6ffa-42b2-9011-d2fb435e8d97)  
 
-⚡ Dashboard 3: Sales by Market
+⚡ Dashboard 3: Sales by Market  
 
-![image](https://github.com/user-attachments/assets/7f93aeba-ab6b-4b05-9eb0-dcd92fae27cf)
+![image](https://github.com/user-attachments/assets/ca902161-63d0-42b8-aa76-1bc443624f78)  
 
 
  
@@ -242,7 +242,7 @@ Explain the step-by-step approach taken to solve the problem.
 
 #### 1️⃣ Dashboard 1: Sales Overview
 
-![image](https://github.com/user-attachments/assets/573eafc7-e02d-411f-9b2d-01e4a4f1f064)
+![image](https://github.com/user-attachments/assets/6dc65c21-a7ab-4bd7-bb21-6a3ceedcbdba)
 
 
 📌 Analysis:  
@@ -254,9 +254,9 @@ Explain the step-by-step approach taken to solve the problem.
   
 
 
-#### 2️⃣ Dashboard 2: Sales by product 
+#### 2️⃣ Dashboard 2: Sales by product  
 
-![image](https://github.com/user-attachments/assets/9bc1002c-99f9-41d6-a953-ff5f4a515b5d)
+![image](https://github.com/user-attachments/assets/335d9ea2-f2fa-42d4-93ec-d54bb65721c2)  
 
 
 
@@ -267,9 +267,8 @@ Explain the step-by-step approach taken to solve the problem.
 📌 Analysis 2:  Returned Product Analysis  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4307d530-82cf-4008-9cb3-2310510443a5" alt="Description">
-</p>
-
+  <img src="https://github.com/user-attachments/assets/130e185e-71f3-4d7b-94a8-e2d0e2cd51c2" alt="Description">
+</p>  
 
 ✅ **Total Return Value:** $819.02K, a significant amount that impacts profitability.  
 ✅ **AOV of Returns:** $268.53, indicating that the average value of a returned order is relatively high.  
@@ -289,8 +288,8 @@ Explain the step-by-step approach taken to solve the problem.
 ✅ Some categories have high AOV but do not yield high profits, suggesting a need to optimize pricing and cost structures.    
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/1593e03e-c656-47ad-8a52-3f92ed614ca0" alt="Description">
-</p>
+  <img src="https://github.com/user-attachments/assets/7a3d61ac-a041-47a6-b898-701614d4df0d" alt="Description">
+</p>  
 
 
 ✅ Phones, copiers, and chairs generate the highest revenue.  
@@ -307,7 +306,7 @@ Explain the step-by-step approach taken to solve the problem.
 
 #### 3️⃣ Dashboard 3: Sales by Market  
 
-![image](https://github.com/user-attachments/assets/9515d35c-2f42-421c-a0c5-52ffa312c0ae)
+![image](https://github.com/user-attachments/assets/b9d9741c-ce79-4975-b647-398df14e7c6b)  
 
  
 📌 Analysis 1: Revenue & Orders Overview  
@@ -321,9 +320,8 @@ Explain the step-by-step approach taken to solve the problem.
 📌 Analysis 2: Market performance  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dd6a26e3-9c78-47ff-8668-ee67e491f7d2" alt="Description">
-</p>
-
+  <img src="https://github.com/user-attachments/assets/3e9d0a05-3512-42e6-ab57-e60e32580af2" alt="Description">  
+</p>  
 
 ✅ **APAC & LATAM** have higher orders but high return rates (5.8%-6.9%).  
 ✅ **Canada** has the highest margin profit (26.62%), suggesting strong pricing power.  
@@ -343,9 +341,8 @@ Explain the step-by-step approach taken to solve the problem.
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6467767c-5f5c-4602-9b3a-42b43d172c51" alt="Description">
-</p>
-
+  <img src="https://github.com/user-attachments/assets/55b68735-a00b-4e76-90a0-6c049e8feb6b" alt="Description">
+</p>  
 
 ✅ **Corporate** segment has the highest number of orders but also a high return rate of 4.93%.  
 ✅ **Home Office** segment has lower revenue and returns, showing stable performance.  
